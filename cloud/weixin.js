@@ -44,7 +44,7 @@ var receiveMessage = function(msg, cb) {
       FromUserName: '' + msg.xml.ToUserName + '',
       CreateTime: new Date().getTime(),
       MsgType: 'text',
-      Content: '你好，你发的内容是「' + msg.xml.Content + access_token'」。+acc'
+      Content: access_token
     }
   }
   cb(null, result);
