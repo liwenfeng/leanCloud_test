@@ -38,14 +38,15 @@ var receiveMessage = function(msg, cb) {
       cc.log(access_token)
     });
   })
-  var result = {
+  var result;
+  result = {
     xml: {
       ToUserName: msg.xml.FromUserName[0],
       FromUserName: '' + msg.xml.ToUserName + '',
       CreateTime: new Date().getTime(),
       MsgType: 'text',
-      Content: access_token
+      Content: 1
     }
-  }
+  };
   cb(null, result);
 }
