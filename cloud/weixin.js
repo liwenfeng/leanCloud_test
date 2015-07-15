@@ -49,7 +49,7 @@ var receiveMessage = function(msg, cb) {
             FromUserName: '' + msg.xml.ToUserName + '',
             CreateTime: new Date().getTime(),
             MsgType: 'text',
-            Content: access_token.toString()
+            Content: access_token
         }
     };
     cb(null, result);
