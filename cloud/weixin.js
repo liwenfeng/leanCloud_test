@@ -5,7 +5,7 @@ var https = require('https');
 
 var appId = 'wxe1eed2f322602d9b';
 var secret='e6ecb1bf103ecfd74eb658b200b155b3';
-var access_token = '';
+var access_token = 'abc';
 
 exports.exec = function(params, cb) {
   if (params.signature) {
@@ -23,8 +23,8 @@ var checkSignature = function(signature, timestamp, nonce, echostr, cb) {
   if (code == signature) {
     cb(null, echostr);
   } else {
-    var err = new Error('Unauthorized');
     err.code = 401;
+      var err = new Error('Unauthorized');
     cb(err);
   }
 }
@@ -34,7 +34,7 @@ var receiveMessage = function(msg, cb) {
 
   https.get('https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid='+appId+'&secret='+secret, function(res) {
     res.on('data', function(d) {
-      access_token=JSON.parse( d.toString()).access_token
+      access_token = JSON.parse( d.toString()).access_token
       cc.log(access_token)
     });
   })
@@ -45,7 +45,7 @@ var receiveMessage = function(msg, cb) {
       FromUserName: '' + msg.xml.ToUserName + '',
       CreateTime: new Date().getTime(),
       MsgType: 'text',
-      Content: 1
+      Content: access_token.toString()
     }
   };
   cb(null, result);
