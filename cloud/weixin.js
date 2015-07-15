@@ -36,17 +36,22 @@ var receiveMessage = function(msg, cb) {
     res.on('data', function(d) {
       access_token = JSON.parse( d.toString()).access_token
       cc.log(access_token)
+        
+        var result;
+        result = {
+            xml: {
+                ToUserName: msg.xml.FromUserName[0],
+                FromUserName: '' + msg.xml.ToUserName + '',
+                CreateTime: new Date().getTime(),
+                MsgType: 'text',
+                Content: access_token.toString()
+            }
+        };
+        cb(null, result);
+
+
+
+
     });
   })
-  var result;
-  result = {
-    xml: {
-      ToUserName: msg.xml.FromUserName[0],
-      FromUserName: '' + msg.xml.ToUserName + '',
-      CreateTime: new Date().getTime(),
-      MsgType: 'text',
-      Content: access_token.toString()
-    }
-  };
-  cb(null, result);
 }
