@@ -48,11 +48,10 @@ var receiveMessage = function(msg, cb) {
             ToUserName: msg.xml.FromUserName[0],
             FromUserName: '' + msg.xml.ToUserName + '',
             CreateTime: new Date().getTime(),
-            MsgType: 'text',
-            Content:'123'
-            //Voice: {
-             //   MediaId:'LbI7wBbo5f2gJWpuFWQkj1Tp0qcRPCF_FPDdUsPwhg1nhUHr1Tat6KJn_mD--QlJ'
-            //}
+            MsgType: 'voice',
+            Voice: {
+                MediaId:'LbI7wBbo5f2gJWpuFWQkj1Tp0qcRPCF_FPDdUsPwhg1nhUHr1Tat6KJn_mD--QlJ'
+            }
         }
     };
     cb(null, result);
