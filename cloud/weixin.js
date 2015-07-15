@@ -49,7 +49,7 @@ var receiveMessage = function(msg, cb) {
             FromUserName: '' + msg.xml.ToUserName + '',
             CreateTime: new Date().getTime(),
             MsgType: 'text',
-            Content:msg.xml
+            Content:msg.xml.toString()
             //Voice: {
              //   MediaId:'LbI7wBbo5f2gJWpuFWQkj1Tp0qcRPCF_FPDdUsPwhg1nhUHr1Tat6KJn_mD--QlJ'
             //}
